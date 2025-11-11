@@ -50,13 +50,13 @@ export const LeadsProvider: React.FC<LeadsProviderProps> = ({ children }) => {
   }, [user]);
 
   const addLead = async (
-    newLead: Omit<Lead, "id" | "createdAt" | "updatedAt" | "interactions">
+    newLead: Omit<Lead, "id" | "createdAt" | "updatedAt" | "interactions"> | Omit<Lead, "id" | "createdAt" | "updatedAt" | "interactions" | "createdBy">
   ) => {
     if (!user) return;
 
     const leadData = {
       ...newLead,
-      createdBy: user.id,
+      createdBy: ('createdBy' in newLead && newLead.createdBy) ? newLead.createdBy : user.id,
     };
 
     const { lead, error } = await createLead(leadData);
