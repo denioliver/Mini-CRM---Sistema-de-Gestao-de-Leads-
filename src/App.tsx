@@ -12,7 +12,7 @@ import LeadForm from "./pages/LeadForm";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Mini-CRM---Sistema-de-Gestao-de-Leads-">
       <AuthProvider>
         <LeadsProvider>
           <Routes>
